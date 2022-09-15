@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Greet from './Greet';
 
 class App extends Component {
     state = {
@@ -12,7 +13,8 @@ class App extends Component {
     render() {
         return(
             <div>
-                <h1>Hello World! You are {`${this.formatCount() != 0 ? this.formatCount()+'x' : 'not'}`} fun</h1>
+                <Greet/>
+                <h2>Hello World! You are {`${this.formatCount() != 0 ? this.formatCount()+'x' : 'not'}`} fun</h2>
                 <div style={this.styles} >
                     <button onClick={() => {this.setState({ count: this.state.count - 1})}}>Not Fun</button>
                     <button onClick={() => {this.setState({ count: this.state.count + 1})}}>Fun</button>
