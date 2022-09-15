@@ -8,27 +8,15 @@ class App extends Component {
     styles = {
         display: "flex",
     }
-
-    Increment = () => {
-        this.setState({ count: this.state.count + 1})
-    }
-
-    Decrement = () => {
-        this.setState({ count: this.state.count - 1})
-    }
-
-    Reset = () => {
-        this.setState({ count: this.state.count = 10})
-    }
     
     render() {
         return(
             <div>
                 <h1>Hello World! You are {this.formatCount()}x fun</h1>
                 <div style={this.styles} >
-                    <button onClick={this.Decrement}>Not Fun</button>
-                    <button onClick={this.Increment}>Fun</button>
-                    <button onClick={this.Reset}>Reset</button>
+                    <button onClick={() => {this.setState({ count: this.state.count - 1})}}>Not Fun</button>
+                    <button onClick={() => {this.setState({ count: this.state.count + 1})}}>Fun</button>
+                    <button onClick={() => {this.setState({ count: this.state.count = 10})}}>Reset</button>
                 </div>
             </div>
         );
