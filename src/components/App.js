@@ -12,7 +12,7 @@ class App extends Component {
     render() {
         return(
             <div>
-                <h1>Hello World! You are {this.formatCount()}x fun</h1>
+                <h1>Hello World! You are {`${this.formatCount() != 0 ? this.formatCount()+'x' : 'not'}`} fun</h1>
                 <div style={this.styles} >
                     <button onClick={() => {this.setState({ count: this.state.count - 1})}}>Not Fun</button>
                     <button onClick={() => {this.setState({ count: this.state.count + 1})}}>Fun</button>
