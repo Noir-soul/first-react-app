@@ -19,7 +19,7 @@ class App extends Component {
                 <div style={this.styles} >
                     <button onClick={() => {this.setState({ count: this.state.count - 1})}}>Not Fun</button>
                     <button onClick={() => {this.setState({ count: this.state.count + 1})}}>Fun</button>
-                    <button onClick={() => {this.setState({ count: this.state.count = 10})}}>Reset</button>
+                    <button onClick={() => {this.setState({ count: this.state.count = 2})}}>Reset</button>
                 </div>
                 <CommentBox/>
             </div>
