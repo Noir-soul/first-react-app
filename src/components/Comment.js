@@ -19,6 +19,12 @@ class Comment extends Component {
 
 class CommentBox extends Component {
 
+    state = {
+        showComments: false,
+        commentShown: "Hide coments",
+        commentHidden: "Show comments",
+    }
+
     _getComments() {
         let commentList = [
             {id: 1, author: 'Morgan McCircuit', body: 'Great picture'},
@@ -38,13 +44,16 @@ class CommentBox extends Component {
     
     render() {
         const comments = this._getComments();
+        let commentNodes;
+        let buttonText = "Show comments";
+
+        (this.state.showComments) ? ((commentNodes = <div className="comment-list">{comments}</div>) && (buttonText = "Hide comments")) : commentNodes;
         return(
             <div className="comment-box">
                 <h3>Comments</h3>
                 <h4 className="comment-count">{this._getCommentsTitle(comments.length)}</h4>
-                <div className="comment-list">
-                    {comments}
-                </div>        
+                <button onClick={() => {this.setState({ showComments: !this.state.showComments })}}>{buttonText}</button>
+                {commentNodes}     
             </div>
         )
     }
