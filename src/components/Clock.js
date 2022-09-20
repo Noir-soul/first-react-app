@@ -6,7 +6,7 @@ class Clock extends Component {
         date: new Date()
     }
     
-    getDate() {
+    render() {
 
         let hrs = this.state.date.getHours();
         hrs < 10 ? hrs = "0" + hrs : hrs;
@@ -19,24 +19,14 @@ class Clock extends Component {
 
         let output = `${hrs}:${mins}:${sec}`
 
-        return output;
-    }
-
-    start() {
         this.timer = setInterval(() => this.setState({date: new Date()}), 1000) //wrapper function did the thing lol
 
         return(
             <div>
-                {this.getDate()}
+                {output}
             </div>
         )
     }
-
-    render()
-    {
-        return this.start()
-    }
-
     
 }
 
