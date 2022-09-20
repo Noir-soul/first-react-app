@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Greet from './Greet';
 import CommentBox from './Comment';
+import Clock from './Clock'
 
 class App extends Component {
     state = {
@@ -14,6 +15,7 @@ class App extends Component {
     render() {
         return(
             <div>
+                <Clock/>
                 <Greet/>
                 <h2>Hello World! You are {`${this.formatCount() == 0 ? 'not ' : this.formatCount() == 1 ? " " : this.formatCount()+'x ' }`}fun</h2>
                 <div style={this.styles} >
