@@ -17,7 +17,7 @@ class App extends Component {
             <div>
                 <Clock/>
                 <Greet/>
-                <h2>Hello World! You are {`${this.formatCount() == 0 ? 'not ' : this.formatCount() == 1 ? " " : this.formatCount()+'x ' }`}fun</h2>
+                <h2>This is {`${this.formatCount() == 0 ? 'not ' : this.formatCount() == 1 ? " " : this.formatCount()+'x ' }`}fun</h2>
                 <div style={this.styles} >
                     <button onClick={() => {this.setState({ count: this.state.count - 1})}}>Not Fun</button>
                     <button onClick={() => {this.setState({ count: this.state.count + 1})}}>Fun</button>
