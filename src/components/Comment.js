@@ -30,6 +30,21 @@ class CommentBox extends Component {
         ]
     }
 
+    _saveComments(e) {
+        let newComment = {}
+        const target = e.target
+        let id = this.state.commentList.length + 1
+        let name = target.author.value
+        let body = target.body.value
+        newComment.id = id
+        newComment.author = name
+        newComment.body = body
+        this.state.commentList.push(newComment)
+        console.log(this.state.commentList)
+        console.log(this._getComments())
+        e.preventDefault()
+    }
+
     _getComments() {
         return this.state.commentList.map((comment) => {
             return( <Comment comment={comment} key={comment.id}/>)
@@ -48,6 +63,24 @@ class CommentBox extends Component {
 
         return(
             <div className="comment-box">
+                <div>
+                    <br/>
+                    <form onSubmit={this._saveComments.bind(this)}>
+                        <input
+                        name="author"
+                        type="text"
+                        placeholder="name"
+                        />
+                        <br/>
+                        <textarea
+                        name="body"
+                        type="text"
+                        placeholder="comment"
+                        /> 
+                        <br/>
+                        <input type="submit"/>
+                    </form>
+                </div>
                 <h4 className="comment-count">{this._getCommentsTitle(comments.length)}</h4>
                 <button onClick={() => {this.setState({ showComments: !this.state.showComments })}}>{buttonText}</button>
                 {commentNodes}     
