@@ -22,26 +22,18 @@ class CommentBox extends Component {
 
     state = {
         showComments: false,
-        commentList: [
-            {id: 1, author: 'Morgan McCircuit', body: 'Great app'},
-            {id: 2, author: 'Bending Bender', body: 'Excellent stuff'},
-            {id: 3, author: 'Deez Nuts', body: 'good good good'},
-            {id: 4, author: 'Bat Man', body: 'hmmm'},
-        ]
+        commentList: []
     }
 
     _saveComments(e) {
         let newComment = {}
         const target = e.target
-        let id = this.state.commentList.length + 1
-        let name = target.author.value
-        let body = target.body.value
-        newComment.id = id
-        newComment.author = name
-        newComment.body = body
+        newComment.id = this.state.commentList.length + 1
+        newComment.author = target.author.value
+        newComment.body = target.body.value
         this.state.commentList.push(newComment)
-        console.log(this.state.commentList)
-        console.log(this._getComments())
+        {this.setState({ commentList: this.state.commentList })}
+        document.getElementById("myForm").reset();
         e.preventDefault()
     }
 
@@ -65,12 +57,13 @@ class CommentBox extends Component {
             <div className="comment-box">
                 <div>
                     <br/>
-                    <form onSubmit={this._saveComments.bind(this)}>
+                    <form id="myForm" onSubmit={this._saveComments.bind(this)}>
                         <input
                         name="author"
                         type="text"
                         placeholder="name"
-                        />
+                        required = "true"
+                        /> 
                         <br/>
                         <textarea
                         name="body"
