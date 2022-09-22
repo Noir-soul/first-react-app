@@ -31,7 +31,7 @@ class CommentBox extends Component {
         newComment.id = this.state.commentList.length + 1
         newComment.author = target.author.value
         newComment.body = target.body.value
-        this.state.commentList.push(newComment)
+        this.state.commentList.unshift(newComment)
         {this.setState({ commentList: this.state.commentList })}
         document.getElementById("myForm").reset();
         e.preventDefault()
