@@ -2,13 +2,19 @@ import React, { Component } from "react";
 
 class Comment extends Component {
 
+    _handleDelete(e) {
+        e.preventDefault()
+        this.props.onDelete(this.props.comment)
+    }
+
     render() {
+
         return(
             <div className="comment">
                 <p className="comment-header">{this.props.comment.author}</p>
                 <p className="comment-body">{this.props.comment.body}</p>
                 <div className="comment-footer">
-                    <button className="comment-footer-delete">
+                    <button onClick={this._handleDelete.bind(this)}>
                         Delete
                     </button>
                 </div>
@@ -37,9 +43,18 @@ class CommentBox extends Component {
         e.preventDefault()
     }
 
+    _deleteComment(com) {
+        const commentList = [...this.state.commentList]
+        const commentIndex = commentList.indexOf(com)
+        commentList.splice(commentIndex, 1)
+        console.log(commentList)
+
+        this.setState({ commentList })
+    }
+
     _getComments() {
         return this.state.commentList.map((comment) => {
-            return( <Comment comment={comment} key={comment.id}/>)
+            return( <Comment comment={comment} key={comment.id} onDelete={this._deleteComment.bind(this)}/>)
         })
     }
     
@@ -57,6 +72,7 @@ class CommentBox extends Component {
             <div className="comment-box">
                 <div>
                     <br/>
+                    <h3>Join the Discussion</h3>
                     <form id="myForm" onSubmit={this._saveComments.bind(this)}>
                         <input
                         name="author"
