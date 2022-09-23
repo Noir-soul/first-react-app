@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import Clock from "./Clock";
 
 class Comment extends Component {
+
+    time = new Clock()
 
     _handleDelete(e) {
         e.preventDefault()
@@ -11,7 +14,7 @@ class Comment extends Component {
 
         return(
             <div className="comment">
-                <p className="comment-header">{this.props.comment.author}</p>
+                <p className="comment-header">{this.props.comment.author} {this.time.stop()}</p>
                 <p className="comment-body">{this.props.comment.body}</p>
                 <div className="comment-footer">
                     <button onClick={this._handleDelete.bind(this)}>
@@ -47,8 +50,6 @@ class CommentBox extends Component {
         const commentList = [...this.state.commentList]
         const commentIndex = commentList.indexOf(com)
         commentList.splice(commentIndex, 1)
-        console.log(commentList)
-
         this.setState({ commentList })
     }
 
